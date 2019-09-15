@@ -28,10 +28,10 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
         data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
         to: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
-        unit: "mc",
+        unit: "ether",
         value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
         nonce: null,
-        gasPrice: globalFuncs.urlGet('gasPrice') == null ? null : globalFuncs.urlGet('gasPrice'),
+        gasPrice: globalFuncs.urlGet('gasprice') == null ? null : globalFuncs.urlGet('gasprice'),
         donate: false,
         tokensymbol: globalFuncs.urlGet('tokensymbol') == null ? false : globalFuncs.urlGet('tokensymbol'),
     }
@@ -39,12 +39,11 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
 
     $scope.setSendMode = function(sendMode, tokenId = '', tokensymbol = '') {
         $scope.tx.sendMode = sendMode;
-        console.log("$scope.tx.sendMode", sendMode, "tokenId", tokenId);
         $scope.unitReadable = '';
         if ( globalFuncs.urlGet('tokensymbol') != null ) {
             $scope.unitReadable = $scope.tx.tokensymbol;
             $scope.tx.sendMode = 'token';
-        } else if (sendMode == 'mc') {
+        } else if (sendMode == 'ether') {
             $scope.unitReadable = ajaxReq.type;
         } else {
             $scope.unitReadable = tokensymbol;
@@ -75,7 +74,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
     }
 
     var defaultInit = function() {
-        globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('mc') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
+        globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
         $scope.gasLimitChanged = globalFuncs.urlGet('gaslimit') != null ? true : false;
         $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
         if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokensymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
@@ -94,7 +93,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
             var setTxObj = function() {
                 $scope.addressDrtv.ensAddressField = $scope.parentTxConfig.to;
                 $scope.tx.value = $scope.parentTxConfig.value;
-                $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'mc';
+                $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
                 $scope.tx.tokensymbol = $scope.parentTxConfig.tokensymbol ? $scope.parentTxConfig.tokensymbol : '';
                 $scope.tx.gasPrice = $scope.parentTxConfig.gasPrice ? $scope.parentTxConfig.gasPrice : null;
                 $scope.tx.nonce = $scope.parentTxConfig.nonce ? $scope.parentTxConfig.nonce : null;
@@ -115,7 +114,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
 
     $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {
-            $scope.setSendMode('mc');
+            $scope.setSendMode('ether');
             $scope.wallet.setBalance(applyScope);
             $scope.wallet.setTokens();
         }
@@ -132,7 +131,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
 
     $scope.$watch('tx', function(newValue, oldValue) {
         $rootScope.rootScopeShowRawTx = false;
-        if (oldValue.sendMode && oldValue.sendMode != newValue.sendMode && newValue.sendMode == 'mc') {
+        if (oldValue.sendMode && oldValue.sendMode != newValue.sendMode && newValue.sendMode == 'ether') {
             $scope.tx.data = globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data');
             $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
         }
@@ -176,22 +175,22 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         var estObj = {
             to: $scope.tx.to,
             from: $scope.wallet.getAddressString(),
-            value: moacFuncs.sanitizeHex(moacFuncs.decimalToHex(moacUnits.toSha($scope.tx.value, $scope.tx.unit)))
+            value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
         }
-        if ($scope.tx.data != "") estObj.data = moacFuncs.sanitizeHex($scope.tx.data);
+        if ($scope.tx.data != "") estObj.data = ethFuncs.sanitizeHex($scope.tx.data);
         if ($scope.tx.sendMode == 'token') {
             estObj.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
             estObj.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
             estObj.value = '0x00';
         }
-        moacFuncs.estimateGas(estObj, function(data) {
+        ethFuncs.estimateGas(estObj, function(data) {
 
             if (!data.error) {
                 if (data.data == '-1') {
                     console.log("sendTxCtrl:190 ERROR");
                     $scope.notifier.danger(globalFuncs.errorMsgs[21]);
                 }
-                $scope.tx.gasLimit = data.data;
+                $scope.tx.gasLimit = 35000; //Need to update here for calculate automaticly     data.data;
             } else $scope.notifier.danger(data.msg);
         });
     }
@@ -220,11 +219,6 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         // if false, replace gas price and nonce. gas price from slider. nonce from server.
         if (txData.gasPrice && txData.nonce) txData.isOffline = true;
 
-        // console.log("Scope.tx.gasPrice",$scope.tx.gasPrice);
-        // // if (txData.gasPrice == null){
-        //     txData.gasPrice = '0x77359400';
-        // // }
-        console.log("txData.gasPrice:", txData);
         if ($scope.tx.sendMode == 'token') {
             // if the amount of tokens you are trying to send > tokens you have, throw error
             if (!isEnough($scope.tx.value, $scope.wallet.tokenObjs[$scope.tokenTx.id].balance)) {
@@ -235,13 +229,14 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
             txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
             txData.value = '0x00';
         }
-        uiFuncs.generateTx(txData, function(rawTx) {            
+        uiFuncs.generateTx(txData, function(rawTx) {
+            console.log("rawTx.isError? ", rawTx.isError);
             if (!rawTx.isError) {
                 $scope.rawTx = rawTx.rawTx;
                 $scope.signedTx = rawTx.signedTx;
                 $rootScope.rootScopeShowRawTx = true;
             } else {
-                console.log(rawTx.error);
+                console.log("rawTxeror: ", rawTx.error);
                 $rootScope.rootScopeShowRawTx = false;
                 $scope.notifier.danger(rawTx.error);
             }
@@ -255,7 +250,7 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
             if (!resp.isError) {
                 var checkTxLink = "https://www.MoacWalletOnline.com?txHash=" + resp.data + "#check-tx-status";
                 var txHashLink = $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data);
-                var emailBody = 'I%20was%20trying%20to..............%0A%0A%0A%0ABut%20I%27m%20confused%20because...............%0A%0A%0A%0A%0A%0ATo%20Address%3A%20https%3A%2F%2Fexplorer.moac.io%2Faddress%2F' + $scope.tx.to + '%0AFrom%20Address%3A%20https%3A%2F%2Fexplorer.moac.io%2Faddress%2F' + $scope.wallet.getAddressString() + '%0ATX%20Hash%3A%20https%3A%2F%2Fetherscan.io%2Ftx%2F' + resp.data + '%0AAmount%3A%20' + $scope.tx.value + '%20' + $scope.unitReadable + '%0ANode%3A%20' + $scope.ajaxReq.type + '%0AToken%20To%20Addr%3A%20' + $scope.tokenTx.to + '%0AToken%20Amount%3A%20' + $scope.tokenTx.value + '%20' + $scope.unitReadable + '%0AData%3A%20' + $scope.tx.data + '%0AGas%20Limit%3A%20' + $scope.tx.gasLimit + '%0AGas%20Price%3A%20' + $scope.tx.gasPrice;
+                var emailBody = 'I%20was%20trying%20to..............%0A%0A%0A%0ABut%20I%27m%20confused%20because...............%0A%0A%0A%0A%0A%0ATo%20Address%3A%20https%3A%2F%2Fexplorer.moac.io%2Faddress%2F' + $scope.tx.to + '%0AFrom%20Address%3A%20https%3A%2F%2Fexplorer.moac.io%2Faddress%2F' + $scope.wallet.getAddressString() + '%0ATX%20Hash%3A%20https%3A%2F%2Fexplorer.moac.io%2Ftx%2F' + resp.data + '%0AAmount%3A%20' + $scope.tx.value + '%20' + $scope.unitReadable + '%0ANode%3A%20' + $scope.ajaxReq.type + '%0AToken%20To%20Addr%3A%20' + $scope.tokenTx.to + '%0AToken%20Amount%3A%20' + $scope.tokenTx.value + '%20' + $scope.unitReadable + '%0AData%3A%20' + $scope.tx.data + '%0AGas%20Limit%3A%20' + $scope.tx.gasLimit + '%0AGas%20Price%3A%20' + $scope.tx.gasPrice;
                 var verifyTxBtn = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? '<a class="btn btn-xs btn-info" href="' + txHashLink + '" class="strong" target="_blank" rel="noopener noreferrer">Verify Transaction</a>' : '';
                 var checkTxBtn = '<a class="btn btn-xs btn-info" href="' + checkTxLink + '" target="_blank" rel="noopener noreferrer"> Check TX Status </a>';
                 var emailBtn = '<a class="btn btn-xs btn-info " href="mailto:support@MoacWalletOnline.com?Subject=Issue%20regarding%20my%20TX%20&Body=' + emailBody + '" target="_blank" rel="noopener noreferrer">Confused? Email Us.</a>';
@@ -285,32 +280,37 @@ var sendTxCtrl = function($scope, $sce, walletService, $rootScope) {
         }
     }
 
+    //Need to update the signed TX format
+    //to use MOAC transaction with extra fields
+    //
     $scope.parseSignedTx = function( signedTx ) {
       var txData = {}
       var isJSON =  false;
       $scope.parsedSignedTx = {}
       if(Validator.isJSON(signedTx)){
-        txData = new ethUtil.Tx(JSON.parse(signedTx));
+        // txData = new ethUtil.Tx(JSON.parse(signedTx));
+        xData = new moacTx(JSON.parse(signedTx))
         isJSON = true;
       } else {
         if( signedTx.slice(0,2)=="0x" ) signedTx = signedTx.slice(2, signedTx.length )
-        txData = new ethUtil.Tx(signedTx)
+        // txData = new ethUtil.Tx(signedTx)
+        txData = new moacTx(signedTx)
       }
       $scope.parsedSignedTx.gasPrice      = {}
       $scope.parsedSignedTx.txFee         = {}
       $scope.parsedSignedTx.balance       = $scope.wallet.getBalance()
-      $scope.parsedSignedTx.from          = isJSON ? $scope.wallet.getChecksumAddressString() : moacFuncs.sanitizeHex(ethUtil.toChecksumAddress(txData.from.toString('hex')))
-      $scope.parsedSignedTx.to            = moacFuncs.sanitizeHex(ethUtil.toChecksumAddress(txData.to.toString('hex')))
-      $scope.parsedSignedTx.value         = (txData.value=='0x'||txData.value==''||txData.value==null) ? '0' : moacUnits.toMc(new BigNumber(moacFuncs.sanitizeHex(txData.value.toString('hex'))).toString(), 'sha' )
-      $scope.parsedSignedTx.gasLimit      = new BigNumber(moacFuncs.sanitizeHex(txData.gasLimit.toString('hex'))).toString()
-      $scope.parsedSignedTx.gasPrice.sha  = new BigNumber(moacFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).toString()
-      $scope.parsedSignedTx.gasPrice.gsha = new BigNumber(moacFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).div(moacUnits.getValueOfUnit('gsha')).toString()
-      $scope.parsedSignedTx.gasPrice.mc  = moacUnits.toMc(new BigNumber(moacFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).toString(), 'sha' )
-      $scope.parsedSignedTx.txFee.sha     = new BigNumber(parseInt($scope.parsedSignedTx.gasLimit)).times(new BigNumber(parseInt($scope.parsedSignedTx.gasPrice.sha)))
-      $scope.parsedSignedTx.txFee.gsha    = new BigNumber($scope.parsedSignedTx.txFee.sha).div(moacUnits.getValueOfUnit('gsha')).toString()
-      $scope.parsedSignedTx.txFee.mc     = moacUnits.toMc( parseInt($scope.parsedSignedTx.txFee.sha), 'sha' ).toString()
-      $scope.parsedSignedTx.nonce         = (txData.nonce=='0x'||txData.nonce==''||txData.nonce==null) ? '0' : new BigNumber(moacFuncs.sanitizeHex(txData.nonce.toString('hex'))).toString()
-      $scope.parsedSignedTx.data          = (txData.data=='0x'||txData.data==''||txData.data==null) ? '(none)' : moacFuncs.sanitizeHex(txData.data.toString('hex'))
+      $scope.parsedSignedTx.from          = isJSON ? $scope.wallet.getChecksumAddressString() : ethFuncs.sanitizeHex(ethUtil.toChecksumAddress(txData.from.toString('hex')))
+      $scope.parsedSignedTx.to            = ethFuncs.sanitizeHex(ethUtil.toChecksumAddress(txData.to.toString('hex')))
+      $scope.parsedSignedTx.value         = (txData.value=='0x'||txData.value==''||txData.value==null) ? '0' : etherUnits.toEther(new BigNumber(ethFuncs.sanitizeHex(txData.value.toString('hex'))).toString(), 'wei' )
+      $scope.parsedSignedTx.gasLimit      = new BigNumber(ethFuncs.sanitizeHex(txData.gasLimit.toString('hex'))).toString()
+      $scope.parsedSignedTx.gasPrice.wei  = new BigNumber(ethFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).toString()
+      $scope.parsedSignedTx.gasPrice.gwei = new BigNumber(ethFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).div(etherUnits.getValueOfUnit('gwei')).toString()
+      $scope.parsedSignedTx.gasPrice.eth  = etherUnits.toEther(new BigNumber(ethFuncs.sanitizeHex(txData.gasPrice.toString('hex'))).toString(), 'wei' )
+      $scope.parsedSignedTx.txFee.wei     = new BigNumber(parseInt($scope.parsedSignedTx.gasLimit)).times(new BigNumber(parseInt($scope.parsedSignedTx.gasPrice.wei)))
+      $scope.parsedSignedTx.txFee.gwei    = new BigNumber($scope.parsedSignedTx.txFee.wei).div(etherUnits.getValueOfUnit('gwei')).toString()
+      $scope.parsedSignedTx.txFee.eth     = etherUnits.toEther( parseInt($scope.parsedSignedTx.txFee.wei), 'wei' ).toString()
+      $scope.parsedSignedTx.nonce         = (txData.nonce=='0x'||txData.nonce==''||txData.nonce==null) ? '0' : new BigNumber(ethFuncs.sanitizeHex(txData.nonce.toString('hex'))).toString()
+      $scope.parsedSignedTx.data          = (txData.data=='0x'||txData.data==''||txData.data==null) ? '(none)' : ethFuncs.sanitizeHex(txData.data.toString('hex'))
 
 
     }

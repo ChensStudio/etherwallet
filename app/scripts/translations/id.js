@@ -138,7 +138,7 @@ ONBOARD_blockchain_content__1   :  'Blockchain itu seperti spreadsheet besar yan
 ONBOARD_blockchain_content__2   :  'Blockchain mencatat siapa yang mengirimkan berapa banyak koin kepada siapa, dan berapa saldo setiap akunnya?.',
 ONBOARD_blockchain_content__3   :  'Catatan tersebut disimpan dan dikelola oleh ribuan orang (penambang) di seluruh dunia yang memiliki komputer khusus.',
 ONBOARD_blockchain_content__4   :  'Blok di blockchain berisi catatan dari semua transaksi individual yang dikirim dari MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, dan lain-lainnya..',
-ONBOARD_blockchain_content__5   :  'Saat Anda melihat saldo di MoacWalletOnline.com atau melihat transaksi Anda di [etherscan.io](https://etherscan.io), Anda melihat data di blockchain, bukan di sistem privat Anda.',
+ONBOARD_blockchain_content__5   :  'Saat Anda melihat saldo di MoacWalletOnline.com atau melihat transaksi Anda di [explorer.moac.io](http://explorer.moac.io), Anda melihat data di blockchain, bukan di sistem privat Anda.',
 ONBOARD_blockchain_content__6   :  'Sekali lagi: **kami bukan sebuah bank**.',
 ONBOARD_interface_title__alt    :  'MEW adalah sebuah antarmuka',
 ONBOARD_why_title__alt          :  'Lalu...apa pentingnya?',
@@ -258,10 +258,10 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Saya paham. Lanjutkan.',
 GEN_Label_5                 : 'Simpan Kunci Privat Anda. ',
 GEN_Unlock                  : 'Buka kunci dompet Anda untuk melihat alamat Anda',
-GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `41 GSHA`.',
+GAS_PRICE_Desc              : 'Harga Gas Price adalah jumlah yang Anda bayar per unit gas. `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Makin tinggi harga gas = transaksi makin cepat, tapi makin mahal. Default-nya `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Batas Gas (Gas limit) adalah jumlah gas untuk dikirim bersama TX Anda.  `Biaya TX = harga gas * gas limit` & dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Menaikkan angka ini tidak mempercepat TX Anda untuk ditambang. Pengiriman ETH = `21000`. Pengiriman Token = ~`200000`.',
 NONCE_Desc                  : 'Nonce adalah nomor transaksi yang dikirimn dari sebuah alamat. Ini untuk menjamin agar pengiriman terlaksana secara runtut dan tidak ada yang dilakukan lebih dari sekali.',
-TXFEE_Desc                  : 'Biaya TX Fee dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Jumlahnya =  `gas limit` * `gas price`. [Anda dapat mengkonversi GSHA -> ETH](https://www.MoacWalletOnline.com/helpers.html)',
+TXFEE_Desc                  : 'Biaya TX Fee dibayarkan kepada miners untuk memasukkan TX Anda ke dalam block. Jumlahnya =  `gas limit` * `gas price`. [Anda dapat mengkonversi GWEI -> ETH](https://www.MoacWalletOnline.com/helpers.html)',
 
 
 
@@ -509,7 +509,7 @@ MYWAL_Content_2             : 'Pastkan Anda telah **menyimpan Kunci Privat dan/a
 MYWAL_Content_3             : 'Jika Anda akan memakai dompet ini dengan MyEtherWallet CX Anda ke depan, Kunci Privat/JSON dan password harus ditambahkan lagi secara manual. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Memungkinkan Anda untuk mencetak Dompet Kertas dari berbagai format atau versi Kunci Privat. Hal ini diperlukan pada saat anda ingin [mengimpor akun Anda ke Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jika Anda hanya ingin pengecekan saldo, pakailah salah satu layanan blockchain explorer seperti [etherscan.io](https://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Memungkinkan Anda untuk mencetak Dompet Kertas dari berbagai format atau versi Kunci Privat. Hal ini diperlukan pada saat anda ingin [mengimpor akun Anda ke Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jika Anda hanya ingin pengecekan saldo, pakailah salah satu layanan blockchain explorer seperti [explorer.moac.io](http://explorer.moac.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Untuk pencetakan Dompet Kertas dari berbagai format Kunci Privat. ',
 VIEWWALLET_SuccessMsg       : 'Berhasil! Berikut detil dari dompet Anda. ',
 VIEWWALLET_ShowPrivKey      : '(show)',
@@ -574,7 +574,7 @@ ERROR_6                     : 'Password tidak valid. ',
 ERROR_7                     : 'Jumlah tidak valid. (Harus integer. Coba 0-18.) ', // 7
 ERROR_8                     : 'Gas limit tidak valid. (Harus integer. Coba 21000-4000000.) ', // 8
 ERROR_9                     : 'Nilai data tidak valid. (Harus hex.) ', // 9
-ERROR_10                    : 'Jumlah Gas tidak valid. (Harus integer. Coba 20 GSHA / 20000000000 WEI.) ',
+ERROR_10                    : 'Jumlah Gas tidak valid. (Harus integer. Coba 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Nonce tidak valid. (Harus integer.) ', // 11
 ERROR_12                    : 'Signed transaction tidak valid. ',
 ERROR_13                    : 'Sudah ada Dompet dengan nickname ini. ',
@@ -624,7 +624,7 @@ GETH_GasLimit               : 'Melebihi limit blok gas ',
 GETH_NegativeValue          : 'Nilai negatif ',
 
 /* Parity Error Messages */
-PARITY_AlreadyImported      : "(parity-01) Transaksi dengan hash yang sama sudah pernah di-impor sebelumnya. A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [etherscan.io](https://etherscan.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_AlreadyImported      : "(parity-01) Transaksi dengan hash yang sama sudah pernah di-impor sebelumnya. A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [explorer.moac.io](http://explorer.moac.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
 PARITY_GasLimitExceeded     : "(parity-02) Biaya transaksi melebihi limit gas yang berlaku. Limit: {}, tersedia: {}. Coba turunkan gas yang disediakan. Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
 PARITY_InsufficientBalance  : "(parity-03) Dana tidak mencukupi. Akun yang dipakai untuk mengirim tidak memiliki dana yang cukup. Diperlukan {} dan hanya tersedia: {}. Insufficient balance. The account you tried to send transaction from does not have enough funds. If you believe this is in error, try using the 'Send Entire Balance' button, or pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
 PARITY_InsufficientGasPrice : "(parity-04) Biaya transaksi terlalu rendah. Tidak memenuhi nilai biaya minimal untuk node Anda(minimal: {}, got: {}). Coba naikkan biaya transaksi. There is another transaction with same nonce in the queue, or the transaction fee is too low. Try incrementing the nonce by clicking the Generate button again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
@@ -830,10 +830,10 @@ HELP_15_Title               : '15) Kenapa akun yang baru saja saya buat tidak mu
 HELP_15_Desc_1              : 'Account hanya akan muncul di explorer blockchain begitu akun memiliki aktivitas di dalamnya&mdash;misalnya, setelah Anda memindahkan beberapa Ether ke sana. ',
 
 HELP_16_Title               : '16) Bagaimana cara memeriksa saldo akun saya? ',
-HELP_16_Desc_1              : 'Anda bisa menggunakan eksplorer blockchain seperti [etherscan.io](https://etherscan.io/). Paste alamat Anda ke dalam search bar dan riwayat transaksi Anda akan ditampilkan. Contohnya, [akun donasi kami](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) dilihat di etherscan.io ',
+HELP_16_Desc_1              : 'Anda bisa menggunakan eksplorer blockchain seperti [explorer.moac.io](http://explorer.moac.io/). Paste alamat Anda ke dalam search bar dan riwayat transaksi Anda akan ditampilkan. Contohnya, [akun donasi kami](http://explorer.moac.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) dilihat di explorer.moac.io ',
 
 HELP_17_Title               : '17) Mengapa saldo saya tidak muncul saat saya membuka dompet saya? ',
-HELP_17_Desc_1              : 'Hal ini kemungkinan besar karena Anda berada di belakang firewall. API yang kami gunakan untuk mendapatkan saldo dan mengonversi saldo tersebut terkadang diblokir oleh firewall. Anda masih bisa mengirim transaksi, Anda hanya perlu menggunakan metode yang berbeda untuk melihat saldo tersebut, misalnya memakai etherscan.io ',
+HELP_17_Desc_1              : 'Hal ini kemungkinan besar karena Anda berada di belakang firewall. API yang kami gunakan untuk mendapatkan saldo dan mengonversi saldo tersebut terkadang diblokir oleh firewall. Anda masih bisa mengirim transaksi, Anda hanya perlu menggunakan metode yang berbeda untuk melihat saldo tersebut, misalnya memakai explorer.moac.io ',
 
 HELP_18_Title               : '18) Dimana file dompet geth saya? ',
 

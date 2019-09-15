@@ -138,7 +138,7 @@ ONBOARD_blockchain_content__1   :  'The blockchain is like a huge, global, decen
 ONBOARD_blockchain_content__2   :  'It keeps track of who sent how many coins to whom, and what the balance of every account is.',
 ONBOARD_blockchain_content__3   :  'It is stored and maintained by thousands of people (miners) across the globe who have special computers.',
 ONBOARD_blockchain_content__4   :  'The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.',
-ONBOARD_blockchain_content__5   :  'When you see your balance on MoacWalletOnline.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.',
+ONBOARD_blockchain_content__5   :  'When you see your balance on MoacWalletOnline.com or view your transactions on [explorer.moac.io](http://explorer.moac.io), you are seeing data on the blockchain, not in our personal systems.',
 ONBOARD_blockchain_content__6   :  'Again: **we are not a bank**.',
 ONBOARD_interface_title__alt    :  'MEW is an Interface',
 ONBOARD_why_title__alt          :  'But...why does this matter?',
@@ -257,10 +257,10 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'Je comprends. Continuer.',
 GEN_Label_5                 : 'Sauvegardez votre `clé privée`. ',
 GEN_Unlock                  : 'Déverouillez votre portefeuille pour voir votre adresse.',
-GAS_PRICE_Desc              : 'Le prix du gaz est le montant que vous payez par unité de gaz. `frais de TX  = prix du gaz * limite en gaz` & est payé aux mineurs pour inclure votre transaction à un bloc. Prix de gaz plus haut = transaction plus rapide, mais plus coûteuse. Le prix par défaut est de `41 GSHA`.',
+GAS_PRICE_Desc              : 'Le prix du gaz est le montant que vous payez par unité de gaz. `frais de TX  = prix du gaz * limite en gaz` & est payé aux mineurs pour inclure votre transaction à un bloc. Prix de gaz plus haut = transaction plus rapide, mais plus coûteuse. Le prix par défaut est de `41 GWEI`.',
 GAS_LIMIT_Desc              : 'La limite en gaz est le montant de gaz à envoyer avec votre transaction. `frais de TX  = prix du gaz * limite en gaz` et est payé aux mineurs pour inclure votre transaction à un bloc. Augmenter ce nombre n\'exécutera pas votre transaction plus rapidement. Envoyer ETH = `21000`. Envoyer des Tokens = ~`200000`.',
 NONCE_Desc                  : 'Le nonce est le nombre de transactions envoyées depuis une adresse. Il fait en sorte que les transactions sont envoyées en ordre et pas plus d\'une fois.',
-TXFEE_Desc                  : 'Les frais de transaction sont payés aux mineurs pour inclure votre transaction dans un bloc. Cela représente le `gas limit` * le `gas price`. [Vous pouvez convertir GSHA -> ETH ici](https://www.MoacWalletOnline.com/helpers.html)',
+TXFEE_Desc                  : 'Les frais de transaction sont payés aux mineurs pour inclure votre transaction dans un bloc. Cela représente le `gas limit` * le `gas price`. [Vous pouvez convertir GWEI -> ETH ici](https://www.MoacWalletOnline.com/helpers.html)',
 
 
 
@@ -540,7 +540,7 @@ MSG_info2                   : 'METE TI NON W’ NAN KOTE W’ KONN SÈVI AK LI A
 MSG_info3                   : 'METE YON SÈL BON REZON POU MESAJ LA  POU L’ PA SÈVI ANKÒ POU YON LÒT  REZON ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'SA PÈMÈT OU POU W’ PRAN PLIZYÈ VÈZSYON KLE SEKRÈ  YO EPI AK SÒTI BOUS OU A ANKÒ SOU PAPYE. OU DWE FÈ L’ POU [ PRAN KONT OU A NAN GETH/MIST] (http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). SI W’ VLE  WÈ VALÈ KÒB OU A, NOU MANDE W’ POU SÈVI AK YON EKSPLORATÈ POU BLOCKCHAIN TANKOU[etherscan.io](https://etherscan.io/).',
+VIEWWALLET_Subtitle         : 'SA PÈMÈT OU POU W’ PRAN PLIZYÈ VÈZSYON KLE SEKRÈ  YO EPI AK SÒTI BOUS OU A ANKÒ SOU PAPYE. OU DWE FÈ L’ POU [ PRAN KONT OU A NAN GETH/MIST] (http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). SI W’ VLE  WÈ VALÈ KÒB OU A, NOU MANDE W’ POU SÈVI AK YON EKSPLORATÈ POU BLOCKCHAIN TANKOU[explorer.moac.io](http://explorer.moac.io/).',
 VIEWWALLET_Subtitle_Short   : 'SA PÈMÈT OU POU W’ PRAN PLIZYÈ VÈZSYON KLE SEKRÈ  YO EPI POU SÒTI BOUS OU A ANKÒ SOU PAPYE ',
 VIEWWALLET_SuccessMsg       : 'SIKSÈ ! MEN DETAY YO POU BOUS OU A ',
 VIEWWALLET_ShowPrivKey      : '(show)',
@@ -561,7 +561,7 @@ ERROR_6                     : 'ANTRE YON BON KÒD SEKRÈ ',
 ERROR_7                     : 'TANPRI ANTRE YON VALÈ KI BON  (Must be integer. Try 0-18.) ', // 7 (LI DWE ANTYE. Try 0-18.) ', // 7
 ERROR_8                     : 'TANPRI ANTRE YON BON LIMIT GAZ . (Must be integer. Try 21000-4000000.) ', // 8  (LI DWE ANTYE. Try 21000-4000000.) ', // 8
 ERROR_9                     : 'TANPRI ANTRE YON VALÈ DONE YO KI VALAB. (Must be hex.) ', //9 (LI DWE hex.) ', //9
-ERROR_10                    : 'TANPRI ANTRE YON VALÈ GAZ KI VALAB(Must be integer. Try 20 GSHA / 20000000000 WEI.) (LI DWE ANTYE. Try 20 GSHA / 20000000000 WEI.) ',
+ERROR_10                    : 'TANPRI ANTRE YON VALÈ GAZ KI VALAB(Must be integer. Try 20 GWEI / 20000000000 WEI.) (LI DWE ANTYE. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : '(Must be integer.) ', // 11 TANPRI ANTRE YON NONCE VALAB. . (Must be integer.) ', // 11  	. (LI DWE ANTYE.) ', // 11 ',
 ERROR_12                    : 'SIYATI TRANSFÈ A PA VALAB ',
 ERROR_13                    : 'NON BOUS SA LA DEJA ',
@@ -817,10 +817,10 @@ HELP_15_Title               : '15) POUKISA KONT SA M’ SOT KREYE A PA PARÈT NA
 HELP_15_Desc_1              : 'KONT YO PA PARÈT NAN YON EKSPLORATÈ BLOCKCHAIN LÈ YON AKTIVITE FIN FÈT TANKOU, EGZANP, LE N’ TA GEN POU N’ FE YON TRANSFÈ ETHER . ',
 
 HELP_16_Title               : '16) KÒMAN POU M’ VERIFYE LAJAN SOU KONT MWEN AN ? ',
-HELP_16_Desc_1              : 'OU KAPAB SÈVI AK YON EKSPLORATÈ BLOCKCHAIN TANKOU [etherscan.io](https://etherscan.io/). KOLE ADRÈS OU A NAN BA KOT E POU YO CHÈCHE A EPI SA AP È W’ JWENN LAJAN SOU KONT OU A EPI LIS TRANSFÈ W’ YO. EGZANP, MEN SA [KONT DON NOU YO MONTRE](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) SOU  etherscan.io ',
+HELP_16_Desc_1              : 'OU KAPAB SÈVI AK YON EKSPLORATÈ BLOCKCHAIN TANKOU [explorer.moac.io](http://explorer.moac.io/). KOLE ADRÈS OU A NAN BA KOT E POU YO CHÈCHE A EPI SA AP È W’ JWENN LAJAN SOU KONT OU A EPI LIS TRANSFÈ W’ YO. EGZANP, MEN SA [KONT DON NOU YO MONTRE](http://explorer.moac.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) SOU  explorer.moac.io ',
 
 HELP_17_Title               : '17) POUKISA LAJAN SOU KONT MWEN AN PA PARÈT LÈ M’ OUVRI BOUS MWEN AN ? ',
-HELP_17_Desc_1              : 'SA KI KA LAKÒZ SA SE PASKE W’ KA DÈYÈ YON FIREWALL. APLIKASYON NOU SÈVI AK LI POU N’ JWENN LAJAN SOU KONT OU A EPI KONVÈTI L’ LI SOUVAN BLOKE AK FIREWALL YO POU PLIZYÈ REZON. W’AP TOUJOU KAPAB  VOYE TRANSFÈ MEN FÒK OU FÈL NAN YON LÒT FASON POU W’ KA WÈ LAJAN SOU KONT OU A, TANKOU etherscan.io ',
+HELP_17_Desc_1              : 'SA KI KA LAKÒZ SA SE PASKE W’ KA DÈYÈ YON FIREWALL. APLIKASYON NOU SÈVI AK LI POU N’ JWENN LAJAN SOU KONT OU A EPI KONVÈTI L’ LI SOUVAN BLOKE AK FIREWALL YO POU PLIZYÈ REZON. W’AP TOUJOU KAPAB  VOYE TRANSFÈ MEN FÒK OU FÈL NAN YON LÒT FASON POU W’ KA WÈ LAJAN SOU KONT OU A, TANKOU explorer.moac.io ',
 
 HELP_18_Title               : '18) KOTE PAJ BOUS GETH MWEN AN ? ',
 

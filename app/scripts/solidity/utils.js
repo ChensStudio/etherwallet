@@ -40,7 +40,7 @@ var utf8 = require('utf8');
 
 var unitMap = {
     'noether':      '0',    
-    'sha':          '1',
+    'wei':          '1',
     'kwei':         '1000',
     'Kwei':         '1000',
     'babbage':      '1000',
@@ -49,7 +49,7 @@ var unitMap = {
     'Mwei':         '1000000',
     'lovelace':     '1000000',
     'picoether':    '1000000',
-    'gsha':         '1000000000',
+    'gwei':         '1000000000',
     'Gwei':         '1000000000',
     'shannon':      '1000000000',
     'nanoether':    '1000000000',
@@ -293,13 +293,13 @@ var getValueOfUnit = function (unit) {
 };
 
 /**
- * Takes a number of sha and converts it to any other ether unit.
+ * Takes a number of wei and converts it to any other ether unit.
  *
  * Possible units are:
  *   SI Short   SI Full        Effigy       Other
  * - kwei       femtoether     babbage
  * - mwei       picoether      lovelace
- * - gsha       nanoether      shannon      nano
+ * - gwei       nanoether      shannon      nano
  * - --         microether     szabo        micro
  * - --         milliether     finney       milli
  * - ether      --             --
@@ -320,13 +320,13 @@ var fromWei = function(number, unit) {
 };
 
 /**
- * Takes a number of a unit and converts it to sha.
+ * Takes a number of a unit and converts it to wei.
  *
  * Possible units are:
  *   SI Short   SI Full        Effigy       Other
  * - kwei       femtoether     babbage
  * - mwei       picoether      lovelace
- * - gsha       nanoether      shannon      nano
+ * - gwei       nanoether      shannon      nano
  * - --         microether     szabo        micro
  * - --         microether     szabo        micro
  * - --         milliether     finney       milli
@@ -336,12 +336,12 @@ var fromWei = function(number, unit) {
  * - gether
  * - tether
  *
- * @method toSha
+ * @method toWei
  * @param {Number|String|BigNumber} number can be a number, number string or a HEX of a decimal
  * @param {String} unit the unit to convert from, default ether
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
-var toSha = function(number, unit) {
+var toWei = function(number, unit) {
     var returnValue = toBigNumber(number).times(getValueOfUnit(unit));
 
     return isBigNumber(number) ? returnValue : returnValue.toString(10);
@@ -577,7 +577,7 @@ module.exports = {
     transformToFullName: transformToFullName,
     extractDisplayName: extractDisplayName,
     extractTypeName: extractTypeName,
-    toSha: toSha,
+    toWei: toWei,
     fromWei: fromWei,
     toBigNumber: toBigNumber,
     toTwosComplement: toTwosComplement,

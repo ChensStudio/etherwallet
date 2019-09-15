@@ -40,7 +40,7 @@ globalFuncs.errorMsgs = [
     'Please enter a valid address. ', // 5
     'Please enter a valid password. ', // 6
     'Please enter valid decimals (Must be integer, 0-18). ', // 7
-    'Please enter a valid gas limit (Must be integer. Try 21000-4000000). ', // 8
+    'Please enter a valid gas limit (Must be integer. Try 1000-4000000). ', // 8
     'Please enter a valid data value (Must be hex). ', // 9
     'Please enter a valid gas price. ', // 10 - NOT USED
     'Please enter a valid nonce (Must be integer).', // 11
@@ -95,11 +95,11 @@ globalFuncs.successMsgs = [
 globalFuncs.gethErrors = {
     '(geth-06) Invalid sender\\.' : 'GETH_InvalidSender',
     "(geth-08) This TX's [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html) is too low\\. Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)\\.": "GETH_Nonce",
-    '(geth-02) Gas price too low for acceptance\\. Try raising the gas price to 21 GSHA via the dropdown in top-right\\.' : 'GETH_Cheap',
+    '(geth-02) Gas price too low for acceptance\\. Try raising the gas price to 21 GWEI via the dropdown in top-right\\.' : 'GETH_Cheap',
     '(geth-01) Insufficient balance\\. Your gas limit * gas price + amount to send exceeds your current balance\\. Send more ETH to your account or use the "Send Entire Balance" button\\. If you believe this is in error, try pressing generate again\\. Required (d+) WEI and got: (d+) WEI\\. [Learn More](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)': 'GETH_Balance',
     '(geth-09) Account does not exist or account balance too low\\.' : 'GETH_NonExistentAccount',
     '(geth-04) Insufficient balance\\. Your gas limit * gas price + amount to send exceeds your current balance\\. Send more ETH to your account or use the "Send Entire Balance" button\\. If you believe this is in error, try pressing generate again\\. Required (d+) WEI and got: (d+) WEI\\. [Learn More](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)': 'GETH_InsufficientFunds',
-    '(geth-05) Intrinsic gas too low\\. Try raising the gas price to 21 GSHA via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.' : 'GETH_IntrinsicGas',
+    '(geth-05) Intrinsic gas too low\\. Try raising the gas price to 21 GWEI via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.' : 'GETH_IntrinsicGas',
     '(geth-03) Exceeds block gas limit\\. Transaction cost exceeds current gas limit\\. Limit: (d+) WEI, got: (d+) WEI\\. Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again\\. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)' : 'GETH_GasLimit',
     '(geth-07) Negative value\\.': 'GETH_NegativeValue'
 };
@@ -118,7 +118,7 @@ globalFuncs.getGethMsg = function(str) {
 
 // These are translated in the translation files
 globalFuncs.parityErrors = {
-    "A (parity-01) A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [etherscan.io](https://etherscan.io) & wait 10 minutes before attempting to send again. [Learn More](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)\\. This means it was already broadcast. Please check your address on etherscan.io & wait 10 minutes before attempting to send again to avoid duplicate transactions. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more</a>": "PARITY_AlreadyImported",
+    "A (parity-01) A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [explorer.moac.io](http://explorer.moac.io) & wait 10 minutes before attempting to send again. [Learn More](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)\\. This means it was already broadcast. Please check your address on explorer.moac.io & wait 10 minutes before attempting to send again to avoid duplicate transactions. <a target='_blank' rel='noopener noreferrer' href='https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html'>Learn more</a>": "PARITY_AlreadyImported",
     "(parity-07) There is already a transaction with this [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html)\\. Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html)\\.": "PARITY_Old",
     "(parity-04) There is another transaction with same nonce in the queue, or the transaction fee is too low\\. Try incrementing the nonce by clicking the Generate button again\\. [Learn More](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)\\.": "PARITY_TooCheapToReplace",
     "(parity-06) There are too many transactions in the queue\\. Your transaction was dropped due to limit\\. Try increasing the gas price\\. [Learn More](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)\\.": "PARITY_LimitReached",
@@ -304,7 +304,7 @@ globalFuncs.doesTokenExistInDefaultTokens = function(token, defaultTokensAndNetw
 
 globalFuncs.saveTokenToLocal = function(localToken, callback) {
     try {
-        if (!moacFuncs.validateMoacAddress(localToken.contractAdd)) {throw globalFuncs.errorMsgs[5]}
+        if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) {throw globalFuncs.errorMsgs[5]}
         else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) {throw globalFuncs.errorMsgs[7]}
         else if (globalFuncs.isAlphaNumericOrSpec(localToken.symbol) || localToken.symbol === "") {throw globalFuncs.errorMsgs[19]}
         var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];

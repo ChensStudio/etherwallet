@@ -138,7 +138,7 @@ ONBOARD_blockchain_content__1   :  'El blockchain es como una gran hoja de cálc
 ONBOARD_blockchain_content__2   :  'Realiza un seguimiento de quién envió cuántas monedas a quién, y cuál es el saldo de cada cuenta.',
 ONBOARD_blockchain_content__3   :  'Es almacenado y mantenido por miles de personas (mineros) en todo el mundo que tienen computadoras especiales.',
 ONBOARD_blockchain_content__4   :  'Los bloques en el blockchain se componen de todas las transacciones individuales enviadas desde MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity y en cualquier otro lugar.',
-ONBOARD_blockchain_content__5   :  'Cuando vea su saldo en MoacWalletOnline.com o vea sus transacciones en [etherscan.io] (https://etherscan.io), verá datos en la cadena de bloques, no en nuestros sistemas personales.',
+ONBOARD_blockchain_content__5   :  'Cuando vea su saldo en MoacWalletOnline.com o vea sus transacciones en [explorer.moac.io] (http://explorer.moac.io), verá datos en la cadena de bloques, no en nuestros sistemas personales.',
 ONBOARD_blockchain_content__6   :  'De nuevo: **no somos un banco**.',
 ONBOARD_interface_title__alt    :  'MEW es una Interfaz',
 ONBOARD_why_title__alt          :  'Pero ... ¿por qué importa esto?',
@@ -255,10 +255,10 @@ GEN_Help_20                 : 'Almacenamiento en frio',
 GET_ConfButton              : 'Entiendo. Continuar.',
 GEN_Label_5                 : 'Guarde su `clave privada`.',
 GEN_Unlock                  : 'Desbloquea tu cartera para ver tu dirección',
-GAS_PRICE_Desc              : 'El precio del gas es la cantidad que paga por unidad de gas. `Tarifa de TX = precio de gas * límite de gas` y se paga a los mineros por incluir su TX en un bloque. Mayor el precio del gas = transacción más rápida, pero más costosa. El valor predeterminado es `41 GSHA`.',
+GAS_PRICE_Desc              : 'El precio del gas es la cantidad que paga por unidad de gas. `Tarifa de TX = precio de gas * límite de gas` y se paga a los mineros por incluir su TX en un bloque. Mayor el precio del gas = transacción más rápida, pero más costosa. El valor predeterminado es `41 GWEI`.',
 GAS_LIMIT_Desc              : 'El límite de gas es la cantidad de gas a enviar con su TX. `Tarifa de TX` = precio de gas * límite de gas y se paga a los mineros por incluir su TX en un bloque. Al aumentar este número, tu TX no se extrae más rápido. Enviando ETH = `21000`. Envío de Tokens = ~ `200000`.',
 NONCE_Desc                  : 'El nonce es el número de transacciones enviadas desde una dirección determinada. Asegura que las transacciones se envíen en orden y no más de una vez.',
-TXFEE_Desc                  : 'La tarifa de TX se paga a los mineros por incluir su TX en un bloque. Es el `límite de gas` * `precio del gas`. [Puede convertir GSHA -> ETH aquí](https://www.MoacWalletOnline.com/helpers.html)',
+TXFEE_Desc                  : 'La tarifa de TX se paga a los mineros por incluir su TX en un bloque. Es el `límite de gas` * `precio del gas`. [Puede convertir GWEI -> ETH aquí](https://www.MoacWalletOnline.com/helpers.html)',
 
 
 
@@ -472,7 +472,7 @@ MYWAL_Content_2             : 'Asegúrate de haber **guardado tu clave privada y
 MYWAL_Content_3             : 'Si en el futuro quieres utilizar esta cartera con MyEtherWallet CX, tendrás que volver a añadirla manualmente utilizando Clave Privada/JSON y contraseña. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Esto te permite descargar múltiples versiones de claves privadas e imprimir de nuevo tu cartera en papel. Puede que te interese hacer esto para [importar tu cuenta en Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si quieres comprobar tu saldo, recomendamos utilizar un explorador de blockchain como [etherscan.io](https://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Esto te permite descargar múltiples versiones de claves privadas e imprimir de nuevo tu cartera en papel. Puede que te interese hacer esto para [importar tu cuenta en Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si quieres comprobar tu saldo, recomendamos utilizar un explorador de blockchain como [explorer.moac.io](http://explorer.moac.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Esto te permite descargar múltiples versiones de claves privadas e imprimir de nuevo tu cartera en papel. ',
 VIEWWALLET_SuccessMsg       : '¡Enhorabuena! Estos son los detalles de tu cartera. ',
 VIEWWALLET_ShowPrivKey      : '(mostrar)',
@@ -574,7 +574,7 @@ ERROR_6                         :  '(error_07) Introduce una Contraseña válida
 ERROR_7                         :  '(error_08) Introduce una Cantidad válida. (Must be integer. Try 0-18.) Please enter valid decimals     (Must be an integer. Try 0-18.)', // 7
 ERROR_8                         :  '(error_09) Introduce un Límite de gas válido. (Must be integer. Try 21000-4000000.) Please enter a valid gas limit  (Must be an integer. Try 21000-4000000.)', // 8
 ERROR_9                         :  '(error_10) Introduce un Valor de datos válido. (Must be hex.) Please enter a valid data value (Must be hex.)', // 9
-ERROR_10                        :  '(error_11) Introduce una Cantidad de gas válida. (Must be integer. Try 20 GSHA / 20000000000 WEI.) Please enter a valid gas price. (Must be an integer. Try 20 GSHA / 20000000000 WEI.)',
+ERROR_10                        :  '(error_11) Introduce una Cantidad de gas válida. (Must be integer. Try 20 GWEI / 20000000000 WEI.) Please enter a valid gas price. (Must be an integer. Try 20 GWEI / 20000000000 WEI.)',
 ERROR_11                        :  '(error_12) Introduce un Nonce válido. (Must be integer.) Please enter a valid nonce (Must be an integer.)', // 11
 ERROR_12                        :  '(error_13) Introduce una Transacción firmada válida. Invalid signed transaction.', // 12
 ERROR_13                        :  '(error_14) Ya existe una cartera con este alias. A wallet with this nickname already exists.', // 13
@@ -606,16 +606,16 @@ ERROR_38                        :  '(error_39) Offer must have either price or r
 ERROR_39                        :  '(error_40) Bid must be more than the specified minimum', // 39
 
 GETH_Balance                    :  '(geth-01) Saldo insuficiente. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
-GETH_Cheap                      :  '(geth-02) Precio de gas demasiado bajo para aceptación. Gas price too low for acceptance. Try raising the gas price to 21 GSHA via the dropdown in top-right.',
+GETH_Cheap                      :  '(geth-02) Precio de gas demasiado bajo para aceptación. Gas price too low for acceptance. Try raising the gas price to 21 GWEI via the dropdown in top-right.',
 GETH_GasLimit                   :  '(geth-03) Sobrepasa el límite de gas del bloque. Exceeds block gas limit. Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)',
 GETH_InsufficientFunds          :  '(geth-04) Fondos no suficientes para gas * precio + valor. Insufficient balance. Your gas limit * gas price + amount to send exceeds your current balance. Send more ETH to your account or use the "Send Entire Balance" button. If you believe this is in error, try pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)',
-GETH_IntrinsicGas               :  '(geth-05) Gas intrínseco demasiado bajo. Intrinsic gas too low. Try raising the gas price to 21 GSHA via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.',
+GETH_IntrinsicGas               :  '(geth-05) Gas intrínseco demasiado bajo. Intrinsic gas too low. Try raising the gas price to 21 GWEI via the dropdown in top-right or the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again.',
 GETH_InvalidSender              :  '(geth-06) Remitente no válido. Invalid sender.',
 GETH_NegativeValue              :  '(geth-07) Valor negativo. Negative value.',
 GETH_Nonce                      :  "(geth-08) Nonce demasiado bajo. This TX's [nonce](https://myetherwallet.github.io/knowledge-base/transactions/what-is-nonce.html) is too low. Try incrementing the nonce by pressing the Generate button again, or [replace the pending transaction](https://myetherwallet.github.io/knowledge-base/transactions/check-status-of-ethereum-transaction.html).",
 GETH_NonExistentAccount         :  '(geth-09) La cuenta no existe o tiene un saldo insuficiente. Account does not exist or account balance too low',
 
-PARITY_AlreadyImported          :  "(parity-01) A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [etherscan.io](https://etherscan.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
+PARITY_AlreadyImported          :  "(parity-01) A transaction with the same hash was already imported. It was probably already broadcast. To avoid duplicate transactions, check your address on [explorer.moac.io](http://explorer.moac.io) & wait 10 minutes before attempting to send again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
 PARITY_GasLimitExceeded         :  "(parity-02) Transaction cost exceeds current gas limit. Limit: (d+), got: (d+). Please lower the gas limit to 21000 (for sending) or 200000 (for sending tokens or contracts) and try again. [Learn More](https://myetherwallet.github.io/knowledge-base/gas/what-is-gas-ethereum.html)",
 PARITY_InsufficientBalance      :  "(parity-03) Insufficient balance. The account you tried to send transaction from does not have enough funds. If you believe this is in error, try using the 'Send Entire Balance' button, or pressing generate again. Required (d+) and got: (d+). [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
 PARITY_InsufficientGasPrice     :  "(parity-04) There is another transaction with same nonce in the queue, or the transaction fee is too low. Try incrementing the nonce by clicking the Generate button again. [Learn More.](https://myetherwallet.github.io/knowledge-base/transactions/transactions-not-showing-or-pending.html)",
@@ -831,10 +831,10 @@ HELP_15_Title               : '15) Why hasn\'t the account I just created show u
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your account and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [explorer.moac.io](http://explorer.moac.io/). Paste your address into the search bar and it will pull up your account and transaction history. For example, here\'s what our [donation account](http://explorer.moac.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) looks like on explorer.moac.io ',
 
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
-HELP_17_Desc_1              : 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',
+HELP_17_Desc_1              : 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like explorer.moac.io ',
 
 HELP_18_Title               : '18) Where is my geth wallet file? ',
 

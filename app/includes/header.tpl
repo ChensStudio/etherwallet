@@ -4,19 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>MoacWalletOnline.com</title>
-<meta property="og:title" content="MoacWalletOnline.com: Your Key to Ethereum">
-<meta property="og:site_name" content="MoacWalletOnline.com: Your Key to Ethereum">
-<meta name="twitter:title" content="MoacWalletOnline.com: Your Key to Ethereum">
-<meta name="apple-mobile-web-app-title" content="MoacWalletOnline.com: Your Key to Ethereum">
+<meta property="og:title" content="MoacWalletOnline.com: Your Key to Moac">
+<meta property="og:site_name" content="MoacWalletOnline.com: Your Key to Moac">
+<meta name="twitter:title" content="MoacWalletOnline.com: Your Key to Moac">
+<meta name="apple-mobile-web-app-title" content="MoacWalletOnline.com: Your Key to Moac">
 <link href="https://www.MoacWalletOnline.com" rel="canonical">
-<meta content="https://www.MoacWalletOnline.com" property="og:url">
-<meta content="https://www.MoacWalletOnline.com" name="twitter:url">
 <link rel="stylesheet" href="css/etherwallet-master.min.css">
 <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
 <script type="text/javascript" src="js/etherwallet-master.js"></script>
-<meta name="description" content="MyEtherWallet (MEW) is a free, open-source, client-side interface for generating Ethereum wallets & more. Interact with the Ethereum blockchain easily & securely.">
-<meta property="og:description"  content="Free, open-source, client-side Ethereum wallet. Enabling you to interact with the blockchain easily & securely.">
-<meta name="twitter:description" content="Free, open-source, client-side Ethereum wallet. Enabling you to interact with the blockchain easily & securely.">
 <meta name="robots" content="index,follow">
 <meta name="googlebot" content="index,follow">
 <meta name="google-site-verification" content="IpChQ00NYUQuNs_7Xs6xlnSdzalOlTUYbBsr8f7OpvM" />
@@ -36,7 +31,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="/images/myetherwallet-logo-banner.png" />
 <meta property="og:image" content="/images/moacwallet-logo.png" />
-<meta property="og:image" content="/images/myetherwallet-logo-square.png" />
+<meta property="og:image" content="/images/moacwallet-logo-square.png" />
 <meta property="og:image" content="/images/myetherwallet-banner-fun.jpg" />
 <meta name="twitter:image" content="/images/myetherwallet-logo-twitter.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -80,7 +75,7 @@
     @@if (site === 'moac' ) {
       <a class="brand" href="/" aria-label="Go to homepage">
         <img src="images/moacwallet-logo.png"   height="64px" width="245px" alt="MoacWalletOnline" />
-        <p class="small visible-xs">3.21.11</p>
+        <p class="small visible-xs">0.1.0</p>
       </a>
     }
     <div class="tagline">
@@ -91,6 +86,7 @@
       <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
       <ul class="dropdown-menu" ng-show="dropdown">
         <li><a ng-class="{true:'active'}[curLang=='English']"         ng-click="changeLanguage('en','English'        )"> English         </a></li>
+        <li><a ng-class="{true:'active'}[curLang=='简体中文']"         ng-click="changeLanguage('zhcn','简体中文'        )"> 简体中文         </a></li>
       </ul>
     </span>
 
@@ -118,7 +114,7 @@
       </ul>
       <p class="dropdown-gas__msg"
          ng-show="gasPriceMsg"
-         ng-hide="ajaxReq.type!='MOAC'">
+         ng-hide="ajaxReq.type!='ETH'">
         The network is really full right now. Check
         <a href="https://ethgasstation.info/"
            target="_blank" rel="noopener noreferrer">MOAC Gas Station</a>
@@ -181,6 +177,6 @@
      ng-mouseleave="scrollHoverOut()">&#187;</a>
 </nav>
 
-@@if (site === 'moac' ) { @@include( './header-node-modal.tpl', { "site": "mew" } ) }
+@@if (site === 'moac' ) { @@include( './header-node-modal.tpl', { "site": "moac" } ) }
 
 </header>

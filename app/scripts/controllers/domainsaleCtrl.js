@@ -43,7 +43,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
     $scope.tx = {
         data: '',
         to: '',
-        unit: "mc",
+        unit: "ether",
         value: 0,
         gasPrice: null
     };
@@ -104,7 +104,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         $scope.tx = {
           data: '',
           to: '',
-          unit: 'mc',
+          unit: 'ether',
           value: 0
         };
         clearInterval($scope.objDomainSale.timer);
@@ -139,7 +139,7 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
                         $scope.objDomainSale.status = $scope.domainsaleModes.ineligible;
                         updateScope();
                     } else {
-                        $scope.objDomainSale.valueEth = Number(moacUnits.toMc($scope.objDomainSale.value.toString(), 'sha'))
+                        $scope.objDomainSale.valueEth = Number(etherUnits.toEther($scope.objDomainSale.value.toString(), 'wei'))
                         ENS.getDeedOwner($scope.objDomainSale.deed, function(data) {
                             $scope.objDomainSale.deedOwner = data.data;
                             if (data.data.toLowerCase() != DomainSale.getContractAddress().toLowerCase()) {
@@ -193,21 +193,21 @@ var domainsaleCtrl = function($scope, $sce, walletService) {
         if ($scope.objDomainSale.priceEth == null) {
                 $scope.objDomainSale.price = 0;
         } else {
-            $scope.objDomainSale.price = Number(moacUnits.toSha($scope.objDomainSale.priceEth, 'mc'));
+            $scope.objDomainSale.price = Number(etherUnits.toWei($scope.objDomainSale.priceEth, 'ether'));
         }
     }
     $scope.syncReserve = function() {
         if ($scope.objDomainSale.reserveEth == null) {
                 $scope.objDomainSale.reserve = 0;
         } else {
-            $scope.objDomainSale.reserve = Number(moacUnits.toSha($scope.objDomainSale.reserveEth, 'mc'));
+            $scope.objDomainSale.reserve = Number(etherUnits.toWei($scope.objDomainSale.reserveEth, 'ether'));
         }
     }
     $scope.syncBid = function() {
         if ($scope.objDomainSale.bidEth == null) {
                 $scope.objDomainSale.bid = 0;
         } else {
-            $scope.objDomainSale.bid = Number(moacUnits.toSha($scope.objDomainSale.bidEth, 'mc'));
+            $scope.objDomainSale.bid = Number(etherUnits.toWei($scope.objDomainSale.bidEth, 'ether'));
         }
     }
 

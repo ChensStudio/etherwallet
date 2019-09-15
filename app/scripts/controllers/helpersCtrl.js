@@ -2,10 +2,10 @@
 var helpersCtrl = function($scope) {
     var ENS = new ens();
 
-    var unitNames = ['sha', 'kwei', 'mwei', 'gsha', 'szabo', 'finney', 'mc', 'kether', 'mether', 'gether', 'tether']
+    var unitNames = ['wei', 'kwei', 'mwei', 'gwei', 'szabo', 'finney', 'ether', 'kether', 'mether', 'gether', 'tether']
 
     $scope.units = {
-        mc: 1
+        ether: 1
     };
 
     $scope.decimalNumber = 10;
@@ -14,23 +14,23 @@ var helpersCtrl = function($scope) {
     $scope.convertUnit = function(currentUnit) {
         unitNames.forEach(function(unit) {
             if (currentUnit !== unit) {
-                $scope.units[unit] = $scope.units[currentUnit] ? moacUnits.unitToUnit($scope.units[currentUnit], currentUnit, unit) : '';
+                $scope.units[unit] = $scope.units[currentUnit] ? etherUnits.unitToUnit($scope.units[currentUnit], currentUnit, unit) : '';
             }
         })
     }
 
     $scope.decimalToHex = function() {
-        $scope.hexNumber = $scope.decimalNumber ? moacFuncs.decimalToHex($scope.decimalNumber) : '';
+        $scope.hexNumber = $scope.decimalNumber ? ethFuncs.decimalToHex($scope.decimalNumber) : '';
         $scope.hexToPaddedHex();
     }
 
     $scope.hexToDecimal = function() {
-        $scope.decimalNumber = $scope.hexNumber ? moacFuncs.hexToDecimal($scope.hexNumber) : '';
+        $scope.decimalNumber = $scope.hexNumber ? ethFuncs.hexToDecimal($scope.hexNumber) : '';
         $scope.hexToPaddedHex();
     }
 
     $scope.hexToPaddedHex = function() {
-        $scope.hexPaddedLeft = $scope.hexNumber ? moacFuncs.padLeft($scope.hexNumber, 64, '0') : '';
+        $scope.hexPaddedLeft = $scope.hexNumber ? ethFuncs.padLeft($scope.hexNumber, 64, '0') : '';
     }
 
     $scope.toSHA3 = function() {
@@ -50,17 +50,17 @@ var helpersCtrl = function($scope) {
     }
 
     $scope.toBidWei = function() {
-        $scope.bidWei = $scope.bidEth ? Number(moacUnits.toSha($scope.bidEth, 'mc')) : '';
+        $scope.bidWei = $scope.bidEth ? Number(etherUnits.toWei($scope.bidEth, 'ether')) : '';
         $scope.toBidHex();
     }
 
     $scope.toBidEth = function() {
-        $scope.bidEth = $scope.bidWei ? Number(moacUnits.toMc($scope.bidWei, 'sha')) : '';
+        $scope.bidEth = $scope.bidWei ? Number(etherUnits.toEther($scope.bidWei, 'wei')) : '';
         $scope.toBidHex();
     }
 
     $scope.toBidHex = function() {
-        $scope.bidHex = $scope.bidWei ? moacFuncs.padLeft(moacFuncs.decimalToHex($scope.bidWei), 64, '0') : '';
+        $scope.bidHex = $scope.bidWei ? ethFuncs.padLeft(ethFuncs.decimalToHex($scope.bidWei), 64, '0') : '';
         $scope.allTheThings();
     }
 
@@ -133,7 +133,7 @@ var helpersCtrl = function($scope) {
             $scope.actualPK = "Sorry not found :(";
     }
 
-    $scope.convertUnit('mc');
+    $scope.convertUnit('ether');
     $scope.decimalToHex();
     $scope.toSHA3();
 };

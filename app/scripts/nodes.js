@@ -4,8 +4,9 @@ nodes.customNode = require('./nodeHelpers/customNode');
 nodes.infuraNode = require('./nodeHelpers/infura');
 nodes.metamaskNode = require('./nodeHelpers/metamask');
 nodes.nodeTypes = {
-    MOAC: "MOAC",
-    Custom: "CUSTOM"
+    MOAC: "MC",
+    MOAC_TEST: "MC",
+    Custom: "MC"
 };
 nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
 nodes.ensSubNodeTypes = [nodes.nodeTypes.ETH];
@@ -33,19 +34,19 @@ nodes.nodeList = {
         'tokenList': require('./tokens/moacTokens.json'),
         'abiList': require('./abiDefinitions/moacAbi.json'),
         'service': 'MOAC MAIN',
-        'lib': new nodes.customNode('http://18.236.89.236', '8545')
+        'lib': new nodes.customNode('https://gateway.moac.io/mainnet', '')
     },
     'moac_test': {
         'name': 'MOAC TestNet',
         'blockExplorerTX': 'http://47.75.144.55:3000/tx/[[txHash]]',
         'blockExplorerAddr': 'http://47.75.144.55:3000/addr/[[address]]',
-        'type': nodes.nodeTypes.MOAC,
+        'type': nodes.nodeTypes.MOAC_TEST,
         'eip155': true,
         'chainId': 101,
         'tokenList': require('./tokens/moacTestTokens.json'),
         'abiList': require('./abiDefinitions/moacTestAbi.json'),
         'service': 'MOAC TEST',
-        'lib': new nodes.customNode('http://52.88.141.15', '8545')
+        'lib': new nodes.customNode('https://gateway.moac.io/testnet', '')
     }
 };
 

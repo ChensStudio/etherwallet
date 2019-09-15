@@ -40,16 +40,16 @@ var globalFuncs              = require('./globalFuncs');
 window.globalFuncs           = globalFuncs;
 var uiFuncs                  = require('./uiFuncs');
 window.uiFuncs               = uiFuncs;
-var moacUnits               = require('./moacUnits');
-window.moacUnits            = moacUnits;
+var etherUnits               = require('./etherUnits');
+window.etherUnits            = etherUnits;
 var ajaxReq                  = require('./ajaxReq');
 window.ajaxReq               = ajaxReq;
 var nodes                    = require('./nodes');
 window.nodes                 = nodes;
+var ethFuncs                 = require('./ethFuncs');
+window.ethFuncs              = ethFuncs;
 var moacTx                = require('./moacTx');
 window.moacTx              = moacTx;
-var moacFuncs                 = require('./moacFuncs');
-window.moacFuncs              = moacFuncs;
 var Validator                = require('./validator');
 window.Validator             = Validator;
 var bity                     = require('./bity');
@@ -132,7 +132,7 @@ if (IS_CX) {
 }
 var app = angular.module('mewApp', ['pascalprecht.translate', 'ngSanitize','ngAnimate']);
 app.config(['$compileProvider', function($compileProvider) {
-  $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|mailto):/);
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|http|mailto):/);
 }]);
 app.config(['$translateProvider', function($translateProvider) {
   $translateProvider.useMissingTranslationHandlerLog();

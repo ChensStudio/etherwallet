@@ -57,7 +57,7 @@
     </a>
   </div>
 
-  @@if (site === 'moac' ) { @@include( '../includes/contracts-deploy-modal.tpl', { "site": "mew" } ) }
+  @@if (site === 'mew' ) { @@include( '../includes/contracts-deploy-modal.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( '../includes/contracts-deploy-modal.tpl', { "site": "cx"  } ) }
 
 </section>

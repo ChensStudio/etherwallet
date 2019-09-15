@@ -38,8 +38,8 @@ const kyberFuncs = function() {
 };
 kyberFuncs.defaultValues = {
     gasLimit: 300000,
-    gasPrice: 2000000000, // 2 GSHA
-    maxGasPrice: 30000000000 // 30 GSHA
+    gasPrice: 2000000000, // 2 Gwei
+    maxGasPrice: 30000000000 // 30 Gwei
 };
 kyberFuncs.priceLoaded = false;
 kyberFuncs.currRates = {};
@@ -124,7 +124,7 @@ kyberFuncs.prototype.getTokenList = function () {
 
 kyberFuncs.prototype.getDataString = function (func, inputs) {
     var fullFuncName = ethUtil.solidityUtils.transformToFullName(func);
-    var funcSig = moacFuncs.getFunctionSignature(fullFuncName);
+    var funcSig = ethFuncs.getFunctionSignature(fullFuncName);
     var typeName = ethUtil.solidityUtils.extractTypeName(fullFuncName);
     var types = typeName.split(',');
     types = types[0] == "" ? [] : types;
@@ -213,7 +213,7 @@ kyberFuncs.prototype.convertToTokenWei = function (_value, _token) {
     if (decimal < 18) {
         return new BigNumber(String(_value)).times(new BigNumber(10).pow(decimal)).toString();
     } else {
-        return moacUnits.toSha(_value, "ether");
+        return etherUnits.toWei(_value, "ether");
     }
 
 };
@@ -229,7 +229,7 @@ kyberFuncs.prototype.convertToTokenBase = function (_value, _token) {
 
         return numnum;
     } else {
-        return moacUnits.toMc(_value, "sha");
+        return etherUnits.toEther(_value, "wei");
     }
 };
 
@@ -249,7 +249,7 @@ kyberFuncs.prototype.getBalance = async function (_token, userAddress, callback)
                 return i.type;
             });
 
-            // console.log(moacFuncs.hexToDecimal(data.data)); //todo remove dev item
+            // console.log(ethFuncs.hexToDecimal(data.data)); //todo remove dev item
             console.log(data.data);
             // was returning a number rounded, thus
             // data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0].toNumber();
@@ -414,7 +414,7 @@ kyberFuncs.prototype.getTradeData = function (swapOrder, minRate) {
         let walletId = "0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D";
         let minConversionRate = _this.convertToTokenWei(minRate, "ETH"); // Uses slippagePrice with fallback to MarketRate.  1 => Market Rate, but we could also set this as the quoted rate
         // console.log("minConversionRate", minRate); //todo remove dev item
-        let srcAmount = _this.convertToTokenWei(swapOrder.fromVal, swapOrder.fromCoin); //moacUnits.toSha(swapOrder.fromVal, "ether");
+        let srcAmount = _this.convertToTokenWei(swapOrder.fromVal, swapOrder.fromCoin); //etherUnits.toWei(swapOrder.fromVal, "ether");
         // console.log("srcAmount", srcAmount); //todo remove dev item
         let maxDestAmount = 2 ** 200; //100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; // Really big number (like a googol)
 

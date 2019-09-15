@@ -138,7 +138,7 @@ ONBOARD_blockchain_content__1   :  'The blockchain is like a huge, global, decen
 ONBOARD_blockchain_content__2   :  'It keeps track of who sent how many coins to whom, and what the balance of every account is.',
 ONBOARD_blockchain_content__3   :  'It is stored and maintained by thousands of people (miners) across the globe who have special computers.',
 ONBOARD_blockchain_content__4   :  'The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.',
-ONBOARD_blockchain_content__5   :  'When you see your balance on MoacWalletOnline.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.',
+ONBOARD_blockchain_content__5   :  'When you see your balance on MoacWalletOnline.com or view your transactions on [explorer.moac.io](http://explorer.moac.io), you are seeing data on the blockchain, not in our personal systems.',
 ONBOARD_blockchain_content__6   :  'Again: **we are not a bank**.',
 ONBOARD_interface_title__alt    :  'MEW is an Interface',
 ONBOARD_why_title__alt          :  'But...why does this matter?',
@@ -257,10 +257,10 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : '我了解，請繼續。',
 GEN_Label_5                 : '保存 `私鑰`. ',
 GEN_Unlock                  : '解鎖你的錢包來查看地址',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GSHA`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `10 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
-TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GSHA -> ETH here](https://www.MoacWalletOnline.com/helpers.html)',
+TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.MoacWalletOnline.com/helpers.html)',
 
 
 
@@ -541,7 +541,7 @@ MSG_info2                   : '填入你的暱稱及你使用該暱稱的場合�
 MSG_info3                   : '填入這個訊息的源由來避免被用在其他目的。 ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : '這可以讓你下載不同版本的私鑰並且重新印製出你的紙錢包。你可能會需要這個功能來將你的帳戶[讀入Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)。 如果你想要檢查你的帳號餘額，我們建議你使用區塊鏈瀏覽網頁像是[etherscan.io](https://etherscan.io/)。 ',
+VIEWWALLET_Subtitle         : '這可以讓你下載不同版本的私鑰並且重新印製出你的紙錢包。你可能會需要這個功能來將你的帳戶[讀入Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)。 如果你想要檢查你的帳號餘額，我們建議你使用區塊鏈瀏覽網頁像是[explorer.moac.io](http://explorer.moac.io/)。 ',
 VIEWWALLET_Subtitle_Short   : '這可以讓你下載不同版本的私鑰並且重新印製出你的紙錢包。 ',
 VIEWWALLET_SuccessMsg       : '成功！這些是你的錢包內容。 ',
 VIEWWALLET_ShowPrivKey      : '(顯示)',
@@ -562,7 +562,7 @@ ERROR_6                     : '無效的密碼。 ',
 ERROR_7                     : '無效的數量。(Must be integer. Try 0-18.) ', // 7
 ERROR_8                     : '無效的gas上限。(Must be integer. Try 21000-4000000.) ', // 8
 ERROR_9                     : '無效的data。(Must be hex.) ', // 9
-ERROR_10                    : '無效的gas數量。(Must be integer. Try 20 GSHA / 20000000000 WEI.)',
+ERROR_10                    : '無效的gas數量。(Must be integer. Try 20 GWEI / 20000000000 WEI.)',
 ERROR_11                    : '無效的nonce值。(Must be integer.)', // 11
 ERROR_12                    : '無效的已簽名交易。 ',
 ERROR_13                    : '已經有一個使用相同暱稱的錢包存在。 ',
@@ -617,7 +617,7 @@ PARITY_Old                  : "交易的nonce值太低。請增加nonce值。",
 PARITY_TooCheapToReplace    : "交易手續費太低。已經有另外一筆有同樣nonce值的交易被加入排程。 請增加交易費用來取代該筆交易或增加nonce值來接續在該筆交易之後。",
 PARITY_LimitReached         : "目前排程中有太多交易。你的交易因為超過排程容量上限而被拒絕。請增加交易手續費。",
 PARITY_InsufficientGasPrice : "交易手續費太低。達不到你節點所要求的最低手續費(最低: {}, 收到: {}). 請增加交易手續費。",
-PARITY_InsufficientBalance  : "提供金額不足。你嘗試送出交易的帳戶並沒有足夠的金額。 需要 {} sha 但只有: {} sha.",
+PARITY_InsufficientBalance  : "提供金額不足。你嘗試送出交易的帳戶並沒有足夠的金額。 需要 {} wei 但只有: {} wei.",
 PARITY_GasLimitExceeded     : "交易提供的gas量超過每單位的區塊gas上限 上限: {}, 收到: {}. 請減少提供的gas量。",
 PARITY_InvalidGasLimit      : "提供的gas量超過上限。",
 
@@ -818,10 +818,10 @@ HELP_15_Title               : '15) Why hasn\'t the account I just created show u
 HELP_15_Desc_1              : 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
 
 HELP_16_Title               : '16) How do I check the balance of my account? ',
-HELP_16_Desc_1              : 'You can use a blockchain explorer like [etherscan.io](https://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) looks like on etherscan.io ',
+HELP_16_Desc_1              : 'You can use a blockchain explorer like [explorer.moac.io](http://explorer.moac.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://explorer.moac.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) looks like on explorer.moac.io ',
 
 HELP_17_Title               : '17) Why isn\'t my balance showing up when I unlock my wallet? ',
-HELP_17_Desc_1              : ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',
+HELP_17_Desc_1              : ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like explorer.moac.io ',
 
 HELP_18_Title               : '18) Where is my geth wallet file? ',
 

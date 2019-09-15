@@ -138,7 +138,7 @@ ONBOARD_blockchain_content__1   :  'The blockchain is like a huge, global, decen
 ONBOARD_blockchain_content__2   :  'It keeps track of who sent how many coins to whom, and what the balance of every account is.',
 ONBOARD_blockchain_content__3   :  'It is stored and maintained by thousands of people (miners) across the globe who have special computers.',
 ONBOARD_blockchain_content__4   :  'The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.',
-ONBOARD_blockchain_content__5   :  'When you see your balance on MoacWalletOnline.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.',
+ONBOARD_blockchain_content__5   :  'When you see your balance on MoacWalletOnline.com or view your transactions on [explorer.moac.io](http://explorer.moac.io), you are seeing data on the blockchain, not in our personal systems.',
 ONBOARD_blockchain_content__6   :  'Again: **we are not a bank**.',
 ONBOARD_interface_title__alt    :  'MEW is an Interface',
 ONBOARD_why_title__alt          :  'But...why does this matter?',
@@ -255,10 +255,10 @@ GEN_Help_20                 : 'Kald-lagring',
 GET_ConfButton              : 'Jeg forstår. Fortsett. ',
 GEN_Label_5                 : 'Lagre din `Private Nøkkel`. ',
 GEN_Unlock                  : 'Lås opp lommeboken for å se adressen. ',
-GAS_PRICE_Desc              : 'Gas-pris er beløpet du betaler per gas-enhet. `Transaksjonsavgift = gas-pris * gas-grense` & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Høyere gas-pris = raskere transaksjon, men dyrere. Standardinnstillingen er `41 GSHA`. ',
+GAS_PRICE_Desc              : 'Gas-pris er beløpet du betaler per gas-enhet. `Transaksjonsavgift = gas-pris * gas-grense` & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Høyere gas-pris = raskere transaksjon, men dyrere. Standardinnstillingen er `41 GWEI`. ',
 GAS_LIMIT_Desc              : 'Gas-grense er mengden gas som sendes med transaksjonen din. `Tr.avg.` = gas-pris * gas-grense & betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Å øke dette tallet vil ikke få gjennom transaksjonen din raskere. Ulike typer transaksjoner krever ulik mengde gas. F.eks. koster det `21000` å sende ETH og ~`200 000` å sende tokens. ',
 NONCE_Desc                  : '"Nonce" er antall transaksjoner som noensinne har blitt sendt fra en gitt adresse. Det sikrer at transaksjoner sendes i riktig rekkefølge, og ikke mer enn én gang. ',
-TXFEE_Desc                  : 'Transaksjonsavgiften betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Det er `gas-grense` * `gas-pris`. [Du kan regne om GSHA -> ETH her](https://www.MoacWalletOnline.com/helpers.html)',
+TXFEE_Desc                  : 'Transaksjonsavgiften betales til "utgraverne" for å inkludere transaksjonen din i en blokk. Det er `gas-grense` * `gas-pris`. [Du kan regne om GWEI -> ETH her](https://www.MoacWalletOnline.com/helpers.html)',
 
 
 
@@ -551,7 +551,7 @@ MYWAL_Content_2             : 'Vær sikker på at du har **lagret den private n�
 MYWAL_Content_3             : 'Hvis du ønsker å bruke denne lommeboken med din MyEtherWallet Chrome-utvidelse i fremtiden, må du manuelt legge den til igjen ved å bruke den private nøkkelen/JSON og passord. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : 'Dette gir deg muligheten til å laste ned ulike versjoner av private nøkler og skrive ut papirlommeboken din på nytt. Du vil kanskje gjøre dette for å [importere kontoen din til Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Hvis du bare ønsker å sjekke saldoen din, anbefaler vi at du bruker en "blockchain explorer" som f.eks. [etherscan.io](https://etherscan.io/). ',
+VIEWWALLET_Subtitle         : 'Dette gir deg muligheten til å laste ned ulike versjoner av private nøkler og skrive ut papirlommeboken din på nytt. Du vil kanskje gjøre dette for å [importere kontoen din til Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Hvis du bare ønsker å sjekke saldoen din, anbefaler vi at du bruker en "blockchain explorer" som f.eks. [explorer.moac.io](http://explorer.moac.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Dette gir deg muligheten til å laste ned ulike versjoner av private nøkler og skrive ut papirlommeboken din på nytt. ',
 VIEWWALLET_SuccessMsg       : 'Suksess! Her er detaljene om din lommebok. ',
 VIEWWALLET_ShowPrivKey      : '(show)',
@@ -572,7 +572,7 @@ ERROR_6                     : 'Ugyldig passord. ',
 ERROR_7                     : 'Ugyldig beløp. (Må være heltall. Prøv 0-18.) ', // 7
 ERROR_8                     : 'Ugyldig gas-grense. (Må være heltall. Prøv 21000-4000000.) ', // 8
 ERROR_9                     : 'Ugyldig dataverdi. (Må være hex.) ', // 9
-ERROR_10                    : 'Ugyldig gas-mengde. (Må være heltall. Prøv 20 GSHA / 20000000000 WEI.) ',
+ERROR_10                    : 'Ugyldig gas-mengde. (Må være heltall. Prøv 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : 'Ugyldig nonce. (Må være heltall.) ', // 11
 ERROR_12                    : 'Ugyldig signert transaksjon. ',
 ERROR_13                    : 'En lommebok med dette kallenavnet eksisterer allerede. ',
@@ -829,10 +829,10 @@ HELP_15_Title               : '15) Hvorfor har ikke kontoen jeg nettopp opprette
 HELP_15_Desc_1              : 'Kontoer vil kun dukke opp i en blokkjede-utforsker når kontoen har hatt aktivitet&mdash;for eksempel, når du har overført Ether til den. ',
 
 HELP_16_Title               : '16) Hvordan kan jeg sjekke saldoen på kontoen min? ',
-HELP_16_Desc_1              : 'Du kan bruke en blokkjede-utforsker som [etherscan.io](https://etherscan.io/). Lim inn adressen i søkefeltet og den vil finne fram adressen og transaksjonshistorikken. For eksempel, her ser du hvordan vår [donasjonskonto](https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) ser ut på etherscan.io ',
+HELP_16_Desc_1              : 'Du kan bruke en blokkjede-utforsker som [explorer.moac.io](http://explorer.moac.io/). Lim inn adressen i søkefeltet og den vil finne fram adressen og transaksjonshistorikken. For eksempel, her ser du hvordan vår [donasjonskonto](http://explorer.moac.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) ser ut på explorer.moac.io ',
 
 HELP_17_Title               : '17) Hvorfor vises ikke saldoen min når jeg låser opp lommeboken min? ',
-HELP_17_Desc_1              : 'Dette er mest sannsynlig fordi du er bak en brannmur. API-en vi bruker for å innhente saldoen blokkeres ofte av brannmurer av ymse årsaker. Du vil fortsatt være i stand til å sende transaksjoner, du må bare bruke en annen metode for å se nevnte saldo, som etherscan.io ',
+HELP_17_Desc_1              : 'Dette er mest sannsynlig fordi du er bak en brannmur. API-en vi bruker for å innhente saldoen blokkeres ofte av brannmurer av ymse årsaker. Du vil fortsatt være i stand til å sende transaksjoner, du må bare bruke en annen metode for å se nevnte saldo, som explorer.moac.io ',
 
 HELP_18_Title               : '18) Hvor er min geth lommebok-fil ',
 

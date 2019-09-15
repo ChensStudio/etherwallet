@@ -138,7 +138,7 @@ ONBOARD_blockchain_content__1   :  'The blockchain is like a huge, global, decen
 ONBOARD_blockchain_content__2   :  'It keeps track of who sent how many coins to whom, and what the balance of every account is.',
 ONBOARD_blockchain_content__3   :  'It is stored and maintained by thousands of people (miners) across the globe who have special computers.',
 ONBOARD_blockchain_content__4   :  'The blocks in the blockchain are made up of all the individual transactions sent from MyEtherWallet, MetaMask, Exodus, Mist, Geth, Parity, and everywhere else.',
-ONBOARD_blockchain_content__5   :  'When you see your balance on MoacWalletOnline.com or view your transactions on [etherscan.io](https://etherscan.io), you are seeing data on the blockchain, not in our personal systems.',
+ONBOARD_blockchain_content__5   :  'When you see your balance on MoacWalletOnline.com or view your transactions on [explorer.moac.io](http://explorer.moac.io), you are seeing data on the blockchain, not in our personal systems.',
 ONBOARD_blockchain_content__6   :  'Again: **we are not a bank**.',
 ONBOARD_interface_title__alt    :  'MEW is an Interface',
 ONBOARD_why_title__alt          :  'But...why does this matter?',
@@ -255,10 +255,10 @@ GEN_Help_20                 : 'Cold Storage',
 GET_ConfButton              : 'I understand. Continue.',
 GEN_Label_5                 : 'Save Your `Private Key`. ',
 GEN_Unlock                  : 'Unlock your wallet to see your address',
-GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GSHA`.',
+GAS_PRICE_Desc              : 'Gas Price is the amount you pay per unit of gas. `TX fee = gas price * gas limit` & is paid to miners for including your TX in a block. Higher the gas price = faster transaction, but more expensive. Default is `41 GWEI`.',
 GAS_LIMIT_Desc              : 'Gas limit is the amount of gas to send with your TX. `TX fee` = gas price * gas limit & is paid to miners for including your TX in a block. Increasing this number will not get your TX mined faster. Sending ETH = `21000`. Sending Tokens = ~`200000`.',
 NONCE_Desc                  : 'The nonce is the number of transactions sent from a given address. It ensures transactions are sent in order & not more than once.',
-TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GSHA -> ETH here](https://www.MoacWalletOnline.com/helpers.html)',
+TXFEE_Desc                  : 'The TX Fee is paid to miners for including your TX in a block. Is is the `gas limit` * `gas price`. [You can convert GWEI -> ETH here](https://www.MoacWalletOnline.com/helpers.html)',
 
 
 
@@ -538,7 +538,7 @@ MSG_info2                   : '타인이 사용하지 못하도록 당신의 닉
 MSG_info3                   : '다른 용도로 사용되는 것을 막으려면 세부적인 내용을 메시지에 포함해주세요. ',
 
 /* View Wallet Details */
-VIEWWALLET_Subtitle         : '다른 버전의 개인 키를 다운로드하거나 종이 지갑 정보를 다시 인쇄할 수 있습니다. [계좌를 Geth/Mist로 가져오기](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)를 진행할 때 필요합니다. 잔액을 확인하려면 [etherscan.io](https://etherscan.io/)과 같은 블록체인 조회 서비스를 사용하는 것을 권장합니다. ',
+VIEWWALLET_Subtitle         : '다른 버전의 개인 키를 다운로드하거나 종이 지갑 정보를 다시 인쇄할 수 있습니다. [계좌를 Geth/Mist로 가져오기](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)를 진행할 때 필요합니다. 잔액을 확인하려면 [explorer.moac.io](http://explorer.moac.io/)과 같은 블록체인 조회 서비스를 사용하는 것을 권장합니다. ',
 VIEWWALLET_Subtitle_Short   : '다른 버전의 개인 키를 다운로드하거나 종이 지갑 정보를 다시 인쇄 할 수 있습니다. ',
 VIEWWALLET_SuccessMsg       : '성공했습니다! 지갑의 세부사항은 다음과 같습니다. ',
 VIEWWALLET_ShowPrivKey      : '(보기) ',
@@ -559,7 +559,7 @@ ERROR_6                     : '잘못된 비밀번호입니다. ',
 ERROR_7                     : '잘못된 수량입니다. (Must be integer. Try 0-18.) ', // 7
 ERROR_8                     : '잘못된 가스 한도입니다. (Must be integer. Try 21000-4000000.) ', // 8
 ERROR_9                     : '잘못된 데이터입니다. (Must be hex.) ', // 9
-ERROR_10                    : '잘못된 가스 수량입니다. (Must be integer. Try 20 GSHA / 20000000000 WEI.) ',
+ERROR_10                    : '잘못된 가스 수량입니다. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
 ERROR_11                    : '잘못된 nonce 입니다. (Must be integer.) ', // 11
 ERROR_12                    : '잘못된 서명 트랜잭션입니다. ',
 ERROR_13                    : '이미 같은 닉네임의 지갑이 존재합니다. ',
@@ -614,7 +614,7 @@ PARITY_Old                  : "트랜잭션 Nonce가 너무 낮습니다. Nonce�
 PARITY_TooCheapToReplace    : "트랜잭션 수수료가 너무 낮습니다. 동일한 nonce를 가진 다른 트랜잭션이 대기열에 있습니다. 수수료를 늘리거나 nonce를 늘려보세요. ",
 PARITY_LimitReached         : "대기열에 트랜잭션이 너무 많습니다. 트랜잭션이 한도를 초과하여 해당 트랜잭션이 제외되었습니다. 수수료를 늘려보세요. " ,
 PARITY_InsufficientGasPrice : "트랜잭션 수수료가 너무 낮습니다. 노드의 최소 수수료 (최소 : {}, 획득 : {})를 충족시키지 못합니다. 수수료를 늘려보세요. ",
-PARITY_InsufficientBalance  : "자금이 부족합니다. 트랜잭션을 전송하려는 계좌에 충분한 자금이 없습니다. 필요량: {}, 현재 : {} sha. ",
+PARITY_InsufficientBalance  : "자금이 부족합니다. 트랜잭션을 전송하려는 계좌에 충분한 자금이 없습니다. 필요량: {}, 현재 : {} wei. ",
 PARITY_GasLimitExceeded     : "트랜잭션 비용이 현재 가스 한도를 초과합니다. 제한 : {}, 획득 : {}. 가스 공급량을 줄이고 다시 시도해보세요. ",
 PARITY_InvalidGasLimit      : "공급 된 가스가 한도를 초과했습니다. ",
 
@@ -814,10 +814,10 @@ HELP_15_Title               : '15) 방금 만든 계정이 블록체인 탐색�
 HELP_15_Desc_1              : '계좌는 거래 활동이 있을 경우에만 블록체인 탐색기에 표시됩니다. 예를 들어, 이더리움을 계좌로 이동시키면 계좌가 활성화됩니다. ',
 
 HELP_16_Title               : '16) 내 계좌의 잔액을 어떻게 확인하나요? ',
-HELP_16_Desc_1              : '[etherscan.io] (https://etherscan.io/) 와 같은 블록체인 탐색기를 사용할 수 있습니다. 주소를 검색 창에 붙여넣으면 주소와 거래 내역이 표시됩니다. 예를 들어, 우리의 [기부 계정]은 (https://etherscan.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) 과 같습니다. ',
+HELP_16_Desc_1              : '[explorer.moac.io] (http://explorer.moac.io/) 와 같은 블록체인 탐색기를 사용할 수 있습니다. 주소를 검색 창에 붙여넣으면 주소와 거래 내역이 표시됩니다. 예를 들어, 우리의 [기부 계정]은 (http://explorer.moac.io/address/0xDECAF9CD2367cdbb726E904cD6397eDFcAe6068D) 과 같습니다. ',
 
 HELP_17_Title               : '17) 내 지갑에서 잔액이 표시되지 않는 이유는 뭔가요? ',
-HELP_17_Desc_1              : '그 이유는 방화벽 때문입니다. 우리가 잔액 정보를 얻고 잔액 정보를 변환하는 데 사용하는 API는 어떤 이유로 든 방화벽에 의해 차단되는 경우가 많습니다. 사용자는 계속해서 트랜잭션을 보낼 수 있습니다. 당신은 단지 잔액을 확인하기 위해 etherscan.io 블록체인 탐색 사이트와 같은 다른 방법을 사용해야 될 수 있습니다. ',
+HELP_17_Desc_1              : '그 이유는 방화벽 때문입니다. 우리가 잔액 정보를 얻고 잔액 정보를 변환하는 데 사용하는 API는 어떤 이유로 든 방화벽에 의해 차단되는 경우가 많습니다. 사용자는 계속해서 트랜잭션을 보낼 수 있습니다. 당신은 단지 잔액을 확인하기 위해 explorer.moac.io 블록체인 탐색 사이트와 같은 다른 방법을 사용해야 될 수 있습니다. ',
 
 HELP_18_Title               : '18) 내 geth 지갑 파일이 어디 있나요? ',
 

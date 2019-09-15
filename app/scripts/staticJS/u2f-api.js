@@ -238,6 +238,8 @@ u2f.isAndroidChrome_ = function() {
  */
 u2f.isIosChrome_ = function() {
   return $.inArray(navigator.platform, ["iPhone", "iPad", "iPod"]) > -1;
+  // return false;
+  // return true;
 };
 
 /**

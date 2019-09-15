@@ -35,7 +35,7 @@ moacFuncs.padLeftEven = function(hex) {
 }
 moacFuncs.addTinyMoreToGas = function(hex) {
     hex = this.sanitizeHex(hex);
-    return new BigNumber(moacFuncs.gasAdjustment * moacUnits.getValueOfUnit('gsha')).toString(16);
+    return new BigNumber(moacFuncs.gasAdjustment * etherUnits.getValueOfUnit('gwei')).toString(16);
 }
 moacFuncs.decimalToHex = function(dec) {
     return new BigNumber(dec).toString(16);
@@ -78,7 +78,7 @@ moacFuncs.getFunctionSignature = function(name) {
 moacFuncs.estimateGas = function(dataObj, callback) {
     var adjustGas = function(gasLimit) {
         if (gasLimit == "0x5209") return "21000";
-        if (new BigNumber(gasLimit).gt(9000000)) return "-1";//moac block gas limit is 9000000
+        if (new BigNumber(gasLimit).gt(4000000)) return "-1";
         return new BigNumber(gasLimit).toString();
     }
     ajaxReq.getEstimatedGas(dataObj, function(data) {
@@ -208,6 +208,5 @@ moacFuncs.signTransaction = function (tx, privateKey) {
           }
   
           return rawTransaction;
-  };
-
+    };
 module.exports = moacFuncs;

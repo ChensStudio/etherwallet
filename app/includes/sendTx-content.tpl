@@ -97,8 +97,8 @@
             <ul class="dropdown-menu dropdown-menu-right"
                 ng-show="dropdownAmount && !tx.readOnly">
               <li>
-                <a ng-class="{true:'active'}[tx.sendMode=='mc']"
-                   ng-click="setSendMode('mc')">
+                <a ng-class="{true:'active'}[tx.sendMode=='ether']"
+                   ng-click="setSendMode('ether')">
                      {{ajaxReq.type}}
                 </a>
               </li>
@@ -162,7 +162,7 @@
         </label>
         <input type="text"
                class="form-control"
-               placeholder="21000"
+               placeholder="1000"
                ng-model="tx.gasLimit"
                ng-change="gasLimitChanged=true"
                ng-disabled="tx.readOnly || checkTxReadOnly"
@@ -184,7 +184,7 @@
 
       <!-- Data -->
       <section class="row form-group">
-        <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='mc'">
+        <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
           <span class="account-help-icon">
             <img src="images/icon-help.svg" class="help-icon" />
             <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">
@@ -293,7 +293,7 @@
 
       <div class="col-sm-6">
         <label translate="SEND_raw">
-          Raw Transaction
+          Raw Transaction in JSON
         </label>
         <textarea class="form-control" rows="4" readonly>{{rawTx}}</textarea>
       </div>

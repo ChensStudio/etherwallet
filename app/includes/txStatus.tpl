@@ -34,7 +34,7 @@
 
     <div class="cont-md" ng-show="txInfo.status == txStatus.mined">
       <h3 class="text-success" translate="tx_FoundOnChain"> Transaction Found </h3>
-      <h5> <a href="https://explorer.moac.io/tx/{{ tx.hash }}" target="_blank" rel="noopener noreferrer"> {{ tx.hash }} </a> </h5>
+      <h5> <a href="http://explorer.moac.io/tx/{{ tx.hash }}" target="_blank" rel="noopener noreferrer"> {{ tx.hash }} </a> </h5>
       <p><strong translate="tx_FoundOnChain_1"></strong></p>
       <ul>
         <li translate="tx_FoundOnChain_2"></li>
@@ -79,7 +79,7 @@
               TX Hash
             </td>
             <td>
-              <a href="https://explorer.moac.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener noreferrer">
+              <a href="http://explorer.moac.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener noreferrer">
                 {{ txInfo.hash }}
               </a>
             </td>
@@ -89,7 +89,7 @@
               From Address
             </td>
             <td>
-              <a href="https://explorer.moac.io/address/{{ txInfo.from }}" target="_blank" rel="noopener noreferrer">
+              <a href="http://explorer.moac.io/address/{{ txInfo.from }}" target="_blank" rel="noopener noreferrer">
                 {{ txInfo.from }}
               </a>
             </td>
@@ -99,7 +99,7 @@
               To Address
             </td>
             <td>
-              <a href="https://explorer.moac.io/address/{{ txInfo.to }}" target="_blank" rel="noopener noreferrer">
+              <a href="http://explorer.moac.io/address/{{ txInfo.to }}" target="_blank" rel="noopener noreferrer">
                 {{ txInfo.to }}
               </a>
             </td>
@@ -160,9 +160,9 @@
               </span>
             </td>
             <td>
-              {{ txInfo.gasPrice.gsha }} GSHA/XIAO
+              {{ txInfo.gasPrice.gwei }} GSHA/XIAO
               <small>
-                ({{ txInfo.gasPrice.sha }} SHA)
+                ({{ txInfo.gasPrice.wei }} SHA)
               </small>
             </td>
           </tr>
@@ -181,7 +181,7 @@
               </span>
             </td>
             <td>
-              ({{ txFee.eth }} MOAC)
+              ({{ txFee.eth }} ETH)
               <small>({{ txFee.usd }} USD)</small>
             </td>
           </tr>
@@ -218,8 +218,9 @@
         </h4>
       </div>
       <div ng-show="!wd">
-          @@if (site === 'moac' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+          @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
           @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+          @@if (site === 'moac' )  {  <wallet-decrypt-drtv></wallet-decrypt-drtv>  }
       </div>
     </section>
   </section>
@@ -228,11 +229,13 @@
   <!-- Send Tx Content -->
  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
     <div ng-show="wallet.getChecksumAddressString() == txInfo.from">
-      @@if (site === 'moac' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }
+      @@if (site === 'mew' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }
       @@if (site === 'cx'  ) { @@include( './sendTx-content.tpl', { "site": "cx"  } ) }
+      @@if (site === 'moac' ) { @@include( './sendTx-content.tpl', { "site": "moac" } ) }
 
-      @@if (site === 'moac' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
+      @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
       @@if (site === 'cx'  ) { @@include( './sendTx-modal.tpl',   { "site": "cx"  } ) }
+      @@if (site === 'moac' ) { @@include( './sendTx-modal.tpl',   { "site": "moac" } ) }
     </div>
     <div class="col-xs-12 block block--danger" ng-show="wallet.getChecksumAddressString()!=txInfo.from">
       <h5 translate="ENS_WrongAddress_2">

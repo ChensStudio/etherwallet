@@ -8,7 +8,7 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 		gasLimit: globalFuncs.defaultTxGasLimit,
 		data: "",
 		to: "",
-		unit: "mc",
+		unit: "ether",
 		value: "",
 		nonce: null,
 		gasPrice: null,
@@ -30,13 +30,13 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 			if (data.error) {
 				$scope[varWal][id].balance = data.msg;
 			} else {
-				$scope[varWal][id].balance = moacUnits.toMc(data.data.balance, 'sha');
+				$scope[varWal][id].balance = etherUnits.toEther(data.data.balance, 'wei');
 				$scope[varWal][id].balanceR = new BigNumber($scope[varWal][id].balance).toPrecision(5);
 			}
 		});
 	};
 	$scope.validateAddress = function() {
-		if (moacFuncs.validateMoacAddress($scope.tx.to)) {
+		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
 			for(let i = 0; i < Darklist.length; i++) {
 				if($scope.tx.to.length > 0 && $scope.tx.to.toLowerCase() === Darklist[i].address.toLowerCase()) {
 					$scope.validateAddressStatus = Darklist[i].comment !== ""? $sce.trustAsHtml(globalFuncs.getDangerText(`${globalFuncs.phishingWarning[0] + Darklist[i].comment}`)) : $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.phishingWarning[1]));
@@ -65,7 +65,7 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 	}
 	$scope.prepTX = function() {
 		try {
-			if (!moacFuncs.validateMoacAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
+			if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
 			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[0];
 			$scope.showConfirm = true;
 		} catch (e) {
@@ -80,7 +80,7 @@ var quickSendCtrl = function($scope, $sce, darkList) {
 				if (!rawTx.isError) {
 					uiFuncs.sendTx(rawTx.signedTx, function(resp) {
 						if (!resp.isError) {
-							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank' rel='noopener'> ETH TX via EtherScan.io </a>"));
+							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://explorer.moac.io/tx/" + resp.data + "' target='_blank' rel='noopener'> ETH TX via EtherScan.io </a>"));
 							$scope.setBalance();
 						} else {
 							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));

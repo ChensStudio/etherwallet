@@ -11,7 +11,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
         gasLimit: '',
         data: '',
         to: '',
-        unit: "mc",
+        unit: "ether",
         value: 0,
         nonce: null,
         gasPrice: null
@@ -39,7 +39,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
             gasLimit: '',
             data: '',
             to: '',
-            unit: "mc",
+            unit: "ether",
             value: 0,
             nonce: null,
             gasPrice: null
@@ -82,25 +82,25 @@ var contractsCtrl = function($scope, $sce, walletService) {
     $scope.estimateGasLimit = function() {
         var estObj = {
             from: $scope.wallet != null ? $scope.wallet.getAddressString() : globalFuncs.donateAddress,
-            value: moacFuncs.sanitizeHex(moacFuncs.decimalToHex(moacUnits.toSha($scope.tx.value, $scope.tx.unit))),
-            data: moacFuncs.sanitizeHex($scope.tx.data),
+            value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit))),
+            data: ethFuncs.sanitizeHex($scope.tx.data),
         }
         if ($scope.tx.to != '') estObj.to = $scope.tx.to;
-        moacFuncs.estimateGas(estObj, function(data) {
+        ethFuncs.estimateGas(estObj, function(data) {
             if (!data.error) $scope.tx.gasLimit = data.data;
         });
     }
     $scope.generateTx = function() {
         try {
             if ($scope.wallet == null) throw globalFuncs.errorMsgs[3];
-            else if (!moacFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];
+            else if (!ethFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];
             else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
-            $scope.tx.data = moacFuncs.sanitizeHex($scope.tx.data);
+            $scope.tx.data = ethFuncs.sanitizeHex($scope.tx.data);
             ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
                 if (data.error) $scope.notifier.danger(data.msg);
                 data = data.data;
                 $scope.tx.to = $scope.tx.to == '' ? '0xCONTRACT' : $scope.tx.to;
-                $scope.tx.contractAddr = $scope.tx.to == '0xCONTRACT' ? moacFuncs.getDeteministicContractAddress($scope.wallet.getAddressString(), data.nonce) : '';
+                $scope.tx.contractAddr = $scope.tx.to == '0xCONTRACT' ? ethFuncs.getDeteministicContractAddress($scope.wallet.getAddressString(), data.nonce) : '';
                 var txData = uiFuncs.getTxData($scope);
                 uiFuncs.generateTx(txData, function(rawTx) {
                     if (!rawTx.isError) {
@@ -146,7 +146,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
     $scope.getTxData = function() {
         var curFunc = $scope.contract.functions[$scope.contract.selectedFunc.index];
         var fullFuncName = ethUtil.solidityUtils.transformToFullName(curFunc);
-        var funcSig = moacFuncs.getFunctionSignature(fullFuncName);
+        var funcSig = ethFuncs.getFunctionSignature(fullFuncName);
         var typeName = ethUtil.solidityUtils.extractTypeName(fullFuncName);
         var types = typeName.split(',');
         types = types[0] == "" ? [] : types;
